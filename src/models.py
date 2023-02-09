@@ -34,7 +34,7 @@ class Character(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
     height = Column(Integer)
-    homeworld = Column(String(250))
+    homeworld = Column(String(250), ForeignKey('planet.id'))
     url = Column(String(250))
 
 class Starship(Base):
@@ -52,6 +52,7 @@ class FavPlanets(Base):
     __tablename__ = 'favPlanets'
     # Here we define columns for the table person
     # Notice that each column is also a normal Python instance attribute.
+    id = Column(Integer, primary_key=True)
     userId = Column(Integer, ForeignKey('user.id'))
     planetId = Column(Integer, ForeignKey('planet.id'))
 
@@ -59,6 +60,7 @@ class FavCharacters(Base):
     __tablename__ = 'favCharacters'
     # Here we define columns for the table person
     # Notice that each column is also a normal Python instance attribute.
+    id = Column(Integer, primary_key=True)
     userId = Column(Integer, ForeignKey('user.id'))
     characterId = Column(Integer, ForeignKey('character.id'))
 
@@ -66,6 +68,7 @@ class FavStarships(Base):
     __tablename__ = 'favStarships'
     # Here we define columns for the table person
     # Notice that each column is also a normal Python instance attribute.
+    id = Column(Integer, primary_key=True)
     userId = Column(Integer, ForeignKey('user.id'))
     starshipId =Column(Integer, ForeignKey('starship.id'))
 
